@@ -1,24 +1,124 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-PT">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
+    
+    <!-- Primary Meta Tags -->
+    <title>Marisqueira do Samouco | Restaurante de Frutos do Mar em Samouco, Portugal</title>
+    <meta name="title" content="Marisqueira do Samouco | Restaurante de Frutos do Mar em Samouco, Portugal" />
+    <meta name="description" content="Marisqueira do Samouco - O melhor restaurante de frutos do mar em Samouco, Montijo. Marisco fresco, lagosta, camarão e pratos tradicionais portugueses. Reservas: +351 913 184 552" />
+    <meta name="keywords" content="marisqueira, samouco, restaurante, frutos do mar, marisco, montijo, portugal, lagosta, camarão, cataplana, peixe fresco" />
+    <meta name="author" content="Marisqueira do Samouco" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://marisqueiradosamouco.pt/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content="https://marisqueiradosamouco.pt/" />
+    <meta property="og:title" content="Marisqueira do Samouco | Restaurante de Frutos do Mar em Samouco" />
+    <meta property="og:description" content="O melhor restaurante de frutos do mar em Samouco, Montijo. Marisco fresco, lagosta, camarão e pratos tradicionais portugueses." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:site_name" content="Marisqueira do Samouco" />
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <meta name="twitter:title" content="Marisqueira do Samouco | Restaurante de Frutos do Mar em Samouco" />
+    <meta name="twitter:description" content="O melhor restaurante de frutos do mar em Samouco, Montijo. Marisco fresco e pratos tradicionais portugueses." />
+    <meta name="twitter:image" content="/og-image.jpg" />
+    
+    <!-- Location Meta -->
+    <meta property="business:contact_data:street_address" content="Praça da República nº39" />
+    <meta property="business:contact_data:locality" content="Samouco" />
+    <meta property="business:contact_data:region" content="Setúbal" />
+    <meta property="business:contact_data:postal_code" content="2890-210" />
+    <meta property="business:contact_data:country_name" content="Portugal" />
+    <meta property="business:contact_data:phone_number" content="+351 913 184 552" />
+    
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PT-15" />
+    <meta name="geo.placename" content="Samouco, Montijo" />
+    <meta name="geo.position" content="38.7209871;-9.0040224" />
+    <meta name="ICBM" content="38.7209871, -9.0040224" />
 
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Marisqueira do Samouco",
+      "alternateName": "Samouco Seafood Restaurante",
+      "description": "Restaurante de frutos do mar em Samouco, Portugal. Marisco fresco, lagosta, camarão e pratos tradicionais portugueses.",
+      "image": "/og-image.jpg",
+      "url": "https://marisqueiradosamouco.pt/",
+      "telephone": "+351913184552",
+      "servesCuisine": ["Frutos do Mar", "Portuguesa", "Marisco"],
+      "priceRange": "€€-€€€",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Praça da República nº39",
+        "addressLocality": "Samouco",
+        "addressRegion": "Setúbal",
+        "postalCode": "2890-210",
+        "addressCountry": "PT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.7209871,
+        "longitude": -9.0040224
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "12:30",
+          "closes": "15:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "19:00",
+          "closes": "22:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "150"
+      },
+      "sameAs": [
+        "http://www.facebook.com/pages/Marisqueira-do-Samouco/197224063671691",
+        "https://maps.app.goo.gl/eSifrxMnHNn68DZP6"
+      ],
+      "hasMenu": {
+        "@type": "Menu",
+        "hasMenuSection": [
+          {
+            "@type": "MenuSection",
+            "name": "Mariscos",
+            "description": "Lagosta, lavagante, camarão, amêijoas, mexilhões"
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Peixe Fresco",
+            "description": "Peixes do dia grelhados ou preparados à sua preferência"
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Pratos Tradicionais",
+            "description": "Cataplanas, caldeiradas e arroz de marisco"
+          }
+        ]
+      }
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
