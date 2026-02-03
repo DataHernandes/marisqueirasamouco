@@ -66,17 +66,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        ocean: {
-          deep: "hsl(var(--ocean-deep))",
-          light: "hsl(var(--ocean-light))",
+        charcoal: "hsl(var(--charcoal))",
+        ink: "hsl(var(--ink))",
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+          dark: "hsl(var(--cream-dark))",
         },
-        sand: "hsl(var(--sand))",
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          dark: "hsl(var(--gold-dark))",
+        terracotta: {
+          DEFAULT: "hsl(var(--terracotta))",
+          dark: "hsl(var(--terracotta-dark))",
         },
-        cream: "hsl(var(--cream))",
-        seafoam: "hsl(var(--seafoam))",
+        "warm-white": "hsl(var(--warm-white))",
+        gold: "hsl(var(--gold))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -128,8 +129,8 @@ export default {
         float: "float 3s ease-in-out infinite",
       },
       backgroundImage: {
-        "gradient-ocean": "var(--gradient-ocean)",
-        "gradient-gold": "var(--gradient-gold)",
+        "gradient-dark": "var(--gradient-dark)",
+        "gradient-cream": "var(--gradient-cream)",
         "gradient-hero": "var(--gradient-hero)",
       },
       boxShadow: {
