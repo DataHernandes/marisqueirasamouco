@@ -1,10 +1,8 @@
 import { Phone, MessageCircle, MapPin, Star, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/hero-seafood.jpg";
 
 const HeroSection = () => {
-  const { t } = useLanguage();
   const whatsappNumber = "351913184552";
   const phoneNumber = "+351913184552";
 
@@ -45,7 +43,7 @@ const HeroSection = () => {
               />
             ))}
           </div>
-          <span className="text-cream text-sm font-medium">4.7 {t("hero.rating")}</span>
+          <span className="text-cream text-sm font-medium">4.7 no Google Maps</span>
         </div>
 
         {/* Main Heading */}
@@ -53,18 +51,18 @@ const HeroSection = () => {
           Marisqueira do Samouco
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl text-cream/90 font-light mb-3 animate-fade-in-up [animation-delay:100ms]">
-          {t("hero.subtitle")}
+          Restaurante de Frutos do Mar em Samouco
         </p>
 
         {/* Subheadline */}
         <p className="text-base md:text-lg text-cream/75 max-w-xl mx-auto mb-6 animate-fade-in-up [animation-delay:200ms]">
-          {t("hero.description")}
+          Sabores autênticos do mar português, servidos com tradição e paixão
         </p>
 
         {/* Location Badge */}
         <div className="inline-flex items-center gap-2 text-cream/60 mb-8 animate-fade-in-up [animation-delay:300ms]">
           <MapPin className="w-4 h-4" />
-          <span className="text-sm">{t("hero.location")}</span>
+          <span className="text-sm">Praça da República nº39, Samouco</span>
         </div>
 
         {/* CTAs */}
@@ -75,7 +73,7 @@ const HeroSection = () => {
             className="bg-terracotta hover:bg-terracotta-dark text-cream font-semibold px-8 py-5 rounded-full shadow-strong transition-all hover:scale-105"
           >
             <MessageCircle className="w-5 h-5 mr-2" />
-            {t("hero.cta.whatsapp")}
+            Reservar via WhatsApp
           </Button>
           <Button
             onClick={handlePhoneClick}
@@ -92,15 +90,15 @@ const HeroSection = () => {
         <div className="mt-10 flex flex-wrap justify-center gap-6 animate-fade-in-up [animation-delay:500ms]">
           <div className="flex items-center gap-2 text-cream/50 text-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
-            {t("hero.badge.lgbtq")}
+            LGBTQ+ Friendly
           </div>
           <div className="flex items-center gap-2 text-cream/50 text-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
-            {t("hero.badge.women")}
+            Negócio Liderado por Mulheres
           </div>
           <div className="flex items-center gap-2 text-cream/50 text-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
-            {t("hero.badge.fresh")}
+            Marisco Fresco
           </div>
         </div>
       </div>

@@ -1,30 +1,17 @@
 import { MapPin, Clock, Phone, Heart } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { cn } from "@/lib/utils";
 
 const AboutSection = () => {
-  const { t } = useLanguage();
-  const { ref, isVisible } = useScrollAnimation(0.2);
-
   return (
-    <section 
-      id="sobre" 
-      className="py-16 bg-background"
-      ref={ref as React.RefObject<HTMLElement>}
-    >
-      <div className={cn(
-        "container mx-auto px-4 transition-all duration-700",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      )}>
+    <section id="sobre" className="py-16 bg-background">
+      <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-10">
             <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
-              {t("about.label")}
+              Conheça-nos
             </span>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-3">
-              {t("about.title")}
+              Sobre a Marisqueira do Samouco
             </h2>
             <div className="w-16 h-0.5 bg-terracotta mx-auto" />
           </div>
@@ -34,21 +21,25 @@ const AboutSection = () => {
             {/* Text Content */}
             <div className="space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                {t("about.p1")} <strong className="text-foreground">{t("about.p1.location")}</strong> {t("about.p1.in")}{" "}
-                <strong className="text-foreground">{t("about.p1.country")}</strong>{t("about.p1.end")}
+                Situada na pitoresca <strong className="text-foreground">Praça da República</strong> em{" "}
+                <strong className="text-foreground">Samouco, Portugal</strong>, a Marisqueira do Samouco é
+                um restaurante de referência para os amantes de frutos do mar na região do Montijo.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Com uma <strong className="text-foreground">{t("about.p2.rating")}</strong>{t("about.p2.text")}
+                Com uma <strong className="text-foreground">avaliação de 4.7 estrelas no Google Maps</strong>,
+                somos reconhecidos pela qualidade excepcional dos nossos pratos de marisco, preparados
+                com ingredientes frescos e técnicas tradicionais portuguesas.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Como um <strong className="text-foreground">{t("about.p3.women")}</strong>{t("about.p3.text")}
+                Como um <strong className="text-foreground">negócio liderado por mulheres</strong> e
+                comprometido com a inclusão, recebemos todos os nossos clientes com hospitalidade.
               </p>
 
               {/* Highlights */}
               <div className="flex items-center gap-3 pt-2">
                 <Heart className="w-4 h-4 text-terracotta" />
                 <span className="text-foreground font-medium text-sm">
-                  {t("about.highlight")}
+                  Atendimento acolhedor em Samouco e região
                 </span>
               </div>
             </div>
@@ -62,7 +53,7 @@ const AboutSection = () => {
                     <MapPin className="w-5 h-5 text-terracotta" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1 text-sm">{t("about.card.location")}</h3>
+                    <h3 className="font-semibold text-foreground mb-1 text-sm">Localização</h3>
                     <p className="text-muted-foreground text-sm">
                       Praça da República nº39<br />
                       2890-210 Samouco, Portugal
@@ -78,9 +69,9 @@ const AboutSection = () => {
                     <Clock className="w-5 h-5 text-terracotta" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1 text-sm">{t("about.card.hours")}</h3>
+                    <h3 className="font-semibold text-foreground mb-1 text-sm">Horário</h3>
                     <p className="text-muted-foreground text-sm">
-                      {t("about.hours.lunch")} | {t("about.hours.dinner")}
+                      Almoço: 12:30 – 15:00 | Jantar: 19:00 – 22:00
                     </p>
                   </div>
                 </div>
@@ -93,7 +84,7 @@ const AboutSection = () => {
                     <Phone className="w-5 h-5 text-terracotta" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1 text-sm">{t("about.card.contact")}</h3>
+                    <h3 className="font-semibold text-foreground mb-1 text-sm">Contacto</h3>
                     <a
                       href="tel:+351913184552"
                       className="text-terracotta hover:text-terracotta-dark font-medium transition-colors text-sm"

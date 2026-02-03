@@ -1,23 +1,20 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, MessageCircle, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import logo from "@/assets/logo.png";
+
+const navLinks = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#ementa", label: "Ementa" },
+  { href: "#galeria", label: "Galeria" },
+  { href: "#avaliacoes", label: "Avaliações" },
+  { href: "#localizacao", label: "Localização" },
+  { href: "#contacto", label: "Contacto" },
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { t } = useLanguage();
-
-  const navLinks = [
-    { href: "#sobre", label: t("nav.about") },
-    { href: "#ementa", label: t("nav.menu") },
-    { href: "#galeria", label: t("nav.gallery") },
-    { href: "#avaliacoes", label: t("nav.reviews") },
-    { href: "#localizacao", label: t("nav.location") },
-    { href: "#contacto", label: t("nav.contact") },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +35,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen
+        isScrolled
           ? "bg-cream/98 backdrop-blur-md shadow-medium py-2"
           : "bg-transparent py-4"
       }`}
@@ -51,9 +48,8 @@ const Header = () => {
               src={logo} 
               alt="Marisqueira do Samouco" 
               className={`transition-all duration-300 ${
-                isScrolled || isMobileMenuOpen ? "h-12 md:h-14" : "h-14 md:h-16"
-              }`}
-              style={{ filter: (!isScrolled && !isMobileMenuOpen) ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))' : 'none' }}
+                isScrolled ? "h-12 md:h-14" : "h-14 md:h-16"
+              } ${!isScrolled ? "brightness-0 invert" : ""}`}
             />
           </a>
 
@@ -74,11 +70,9 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Social, Language & CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <LanguageSwitcher variant={isScrolled ? "light" : "dark"} />
-            <div className={`w-px h-5 ${isScrolled ? "bg-foreground/20" : "bg-cream/20"}`} />
-            <div className="flex items-center gap-1">
+          {/* Social & CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2">
               <a
                 href="https://www.facebook.com/pages/Marisqueira-do-Samouco/197224063671691"
                 target="_blank"
@@ -106,6 +100,7 @@ const Header = () => {
                 <Instagram className="w-4 h-4" />
               </a>
             </div>
+            <div className="w-px h-6 bg-current opacity-20" />
             <a
               href="tel:+351913184552"
               className={`flex items-center gap-2 text-sm transition-colors ${
@@ -127,40 +122,47 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Mobile: Language + Menu Button */}
-          <div className="lg:hidden flex items-center gap-2">
-            <LanguageSwitcher variant={(isScrolled || isMobileMenuOpen) ? "light" : "dark"} />
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 ${(isScrolled || isMobileMenuOpen) ? "text-foreground" : "text-cream"}`}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`lg:hidden p-2 ${isScrolled ? "text-foreground" : "text-cream"}`}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <nav className="lg:hidden mt-4 pb-4 border-t border-foreground/10 pt-4">
+          <nav className={`lg:hidden mt-4 pb-4 border-t pt-4 ${
+            isScrolled ? "border-foreground/10" : "border-cream/20"
+          }`}>
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground/80 hover:text-foreground font-medium transition-colors"
+                  className={`font-medium transition-colors ${
+                    isScrolled 
+                      ? "text-foreground/80 hover:text-foreground" 
+                      : "text-cream/90 hover:text-cream"
+                  }`}
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="flex flex-col gap-3 pt-4 border-t border-foreground/10">
+              <div className={`flex flex-col gap-3 pt-4 border-t ${
+                isScrolled ? "border-foreground/10" : "border-cream/20"
+              }`}>
                 <div className="flex items-center gap-4">
                   <a
                     href="https://www.facebook.com/pages/Marisqueira-do-Samouco/197224063671691"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
+                    className={`flex items-center gap-2 transition-colors ${
+                      isScrolled ? "text-foreground/70 hover:text-foreground" : "text-cream/80 hover:text-cream"
+                    }`}
                   >
                     <Facebook className="w-5 h-5" />
                     <span>Facebook</span>
@@ -169,7 +171,9 @@ const Header = () => {
                     href="https://www.instagram.com/marisqueiradosamouco"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
+                    className={`flex items-center gap-2 transition-colors ${
+                      isScrolled ? "text-foreground/70 hover:text-foreground" : "text-cream/80 hover:text-cream"
+                    }`}
                   >
                     <Instagram className="w-5 h-5" />
                     <span>Instagram</span>
@@ -177,7 +181,9 @@ const Header = () => {
                 </div>
                 <a
                   href="tel:+351913184552"
-                  className="flex items-center gap-2 text-foreground/80 hover:text-foreground transition-colors"
+                  className={`flex items-center gap-2 transition-colors ${
+                    isScrolled ? "text-foreground/80 hover:text-foreground" : "text-cream/90 hover:text-cream"
+                  }`}
                 >
                   <Phone className="w-5 h-5" />
                   +351 913 184 552
@@ -187,7 +193,7 @@ const Header = () => {
                   className="bg-terracotta hover:bg-terracotta-dark text-cream font-semibold rounded-full"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  {t("hero.cta.whatsapp")}
+                  Fale Conosco no WhatsApp
                 </Button>
               </div>
             </div>

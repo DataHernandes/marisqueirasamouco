@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { cn } from "@/lib/utils";
 
 import lobsterImg from "@/assets/gallery/lobster.jpg";
 import cataplanaImg from "@/assets/gallery/cataplana.jpg";
@@ -12,19 +9,17 @@ import interiorImg from "@/assets/gallery/interior.jpg";
 import arrozMariscoImg from "@/assets/gallery/arroz-marisco.jpg";
 import grilledFishImg from "@/assets/gallery/grilled-fish.jpg";
 
+const galleryImages = [
+  { src: lobsterImg, alt: "Lagosta grelhada", title: "Lagosta Grelhada" },
+  { src: cataplanaImg, alt: "Cataplana de marisco", title: "Cataplana" },
+  { src: prawnsImg, alt: "Camarões frescos", title: "Camarões" },
+  { src: interiorImg, alt: "Interior do restaurante", title: "O Nosso Espaço" },
+  { src: arrozMariscoImg, alt: "Arroz de marisco", title: "Arroz de Marisco" },
+  { src: grilledFishImg, alt: "Peixe grelhado", title: "Peixe Grelhado" },
+];
+
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const { t, language } = useLanguage();
-  const { ref, isVisible } = useScrollAnimation(0.15);
-
-  const galleryImages = [
-    { src: lobsterImg, alt: "Lagosta grelhada", title: language === "pt" ? "Lagosta Grelhada" : "Grilled Lobster" },
-    { src: cataplanaImg, alt: "Cataplana de marisco", title: "Cataplana" },
-    { src: prawnsImg, alt: "Camarões frescos", title: language === "pt" ? "Camarões" : "Prawns" },
-    { src: interiorImg, alt: "Interior do restaurante", title: language === "pt" ? "O Nosso Espaço" : "Our Space" },
-    { src: arrozMariscoImg, alt: "Arroz de marisco", title: language === "pt" ? "Arroz de Marisco" : "Seafood Rice" },
-    { src: grilledFishImg, alt: "Peixe grelhado", title: language === "pt" ? "Peixe Grelhado" : "Grilled Fish" },
-  ];
 
   const openLightbox = (index: number) => setSelectedImage(index);
   const closeLightbox = () => setSelectedImage(null);
@@ -42,22 +37,15 @@ const GallerySection = () => {
   };
 
   return (
-    <section 
-      id="galeria" 
-      className="py-16 bg-background"
-      ref={ref as React.RefObject<HTMLElement>}
-    >
-      <div className={cn(
-        "container mx-auto px-4 transition-all duration-700",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      )}>
+    <section id="galeria" className="py-16 bg-background">
+      <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-8">
           <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
-            {t("gallery.label")}
+            Galeria
           </span>
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-3">
-            {t("gallery.title")}
+            Os Nossos Pratos
           </h2>
           <div className="w-16 h-0.5 bg-terracotta mx-auto" />
         </div>
@@ -68,11 +56,7 @@ const GallerySection = () => {
             <div
               key={index}
               onClick={() => openLightbox(index)}
-              className={cn(
-                "group relative aspect-square overflow-hidden rounded-lg cursor-pointer transition-all duration-500",
-                isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              )}
-              style={{ transitionDelay: isVisible ? `${index * 80}ms` : "0ms" }}
+              className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"
             >
               <img
                 src={image.src}
