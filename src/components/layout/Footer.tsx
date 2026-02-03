@@ -1,8 +1,10 @@
 import { MapPin, Phone, Clock, Facebook, Instagram, Heart } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-foreground text-cream py-16">
@@ -12,18 +14,17 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <img src={logo} alt="Marisqueira do Samouco" className="h-12 brightness-0 invert mb-4" />
             <p className="text-cream/70 mb-4 leading-relaxed text-sm">
-              Restaurante de frutos do mar em Samouco, Portugal. Servindo os melhores
-              mariscos da região do Montijo com tradição e qualidade.
+              {t("footer.description")}
             </p>
             <div className="flex items-center gap-2 text-cream/50 text-sm">
               <Heart className="w-4 h-4 text-terracotta" />
-              <span>Negócio liderado por mulheres</span>
+              <span>{t("footer.women")}</span>
             </div>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Contacto</h4>
+            <h4 className="font-semibold text-lg mb-4">{t("about.card.contact")}</h4>
             <div className="space-y-3">
               <a
                 href="tel:+351913184552"
@@ -44,19 +45,19 @@ const Footer = () => {
 
           {/* Hours */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Horário</h4>
+            <h4 className="font-semibold text-lg mb-4">{t("about.card.hours")}</h4>
             <div className="flex items-start gap-3 text-cream/70 text-sm">
               <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" />
               <div>
-                <p className="mb-1">Almoço: 12:30 – 15:00</p>
-                <p>Jantar: 19:00 – 22:00</p>
+                <p className="mb-1">{t("about.hours.lunch")}</p>
+                <p>{t("about.hours.dinner")}</p>
               </div>
             </div>
           </div>
 
           {/* Social & Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Redes Sociais</h4>
+            <h4 className="font-semibold text-lg mb-4">{t("footer.social")}</h4>
             <div className="space-y-3">
               <a
                 href="https://www.facebook.com/pages/Marisqueira-do-Samouco/197224063671691"
@@ -93,7 +94,7 @@ const Footer = () => {
         <div className="border-t border-cream/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-cream/50 text-xs text-center md:text-left">
-              © {currentYear} Marisqueira do Samouco. Todos os direitos reservados.
+              © {currentYear} Marisqueira do Samouco. {t("footer.rights")}
             </p>
             <div className="flex items-center gap-4 text-cream/50 text-xs">
               <span>Restaurante de Frutos do Mar em Samouco, Portugal</span>

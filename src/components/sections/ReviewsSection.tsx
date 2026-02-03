@@ -1,46 +1,83 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
-const reviews = [
-  {
-    name: "Maria F.",
-    rating: 5,
-    text: "O melhor marisco que já comi em Portugal! Os camarões estavam incrivelmente frescos.",
-    date: "Há 2 semanas",
-  },
-  {
-    name: "João P.",
-    rating: 5,
-    text: "Ambiente acolhedor e familiar. A cataplana de marisco é espetacular!",
-    date: "Há 1 mês",
-  },
-  {
-    name: "Ana S.",
-    rating: 5,
-    text: "Os preços são justos para a qualidade excepcional. Uma pérola em Samouco!",
-    date: "Há 3 semanas",
-  },
-  {
-    name: "Pedro M.",
-    rating: 4,
-    text: "Excelente arroz de marisco e bom vinho branco. Vale a pena a visita.",
-    date: "Há 1 mês",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { cn } from "@/lib/utils";
 
 const ReviewsSection = () => {
+  const { t, language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation(0.15);
   const averageRating = 4.7;
 
+  const reviews = language === "pt" ? [
+    {
+      name: "Maria F.",
+      rating: 5,
+      text: "O melhor marisco que já comi em Portugal! Os camarões estavam incrivelmente frescos.",
+      date: "Há 2 semanas",
+    },
+    {
+      name: "João P.",
+      rating: 5,
+      text: "Ambiente acolhedor e familiar. A cataplana de marisco é espetacular!",
+      date: "Há 1 mês",
+    },
+    {
+      name: "Ana S.",
+      rating: 5,
+      text: "Os preços são justos para a qualidade excepcional. Uma pérola em Samouco!",
+      date: "Há 3 semanas",
+    },
+    {
+      name: "Pedro M.",
+      rating: 4,
+      text: "Excelente arroz de marisco e bom vinho branco. Vale a pena a visita.",
+      date: "Há 1 mês",
+    },
+  ] : [
+    {
+      name: "Maria F.",
+      rating: 5,
+      text: "The best seafood I've ever had in Portugal! The prawns were incredibly fresh.",
+      date: "2 weeks ago",
+    },
+    {
+      name: "João P.",
+      rating: 5,
+      text: "Cozy and family-friendly atmosphere. The seafood cataplana is spectacular!",
+      date: "1 month ago",
+    },
+    {
+      name: "Ana S.",
+      rating: 5,
+      text: "Fair prices for exceptional quality. A hidden gem in Samouco!",
+      date: "3 weeks ago",
+    },
+    {
+      name: "Pedro M.",
+      rating: 4,
+      text: "Excellent seafood rice and good white wine. Worth the visit.",
+      date: "1 month ago",
+    },
+  ];
+
   return (
-    <section id="avaliacoes" className="py-16 bg-background">
-      <div className="container mx-auto px-4">
+    <section 
+      id="avaliacoes" 
+      className="py-16 bg-background"
+      ref={ref as React.RefObject<HTMLElement>}
+    >
+      <div className={cn(
+        "container mx-auto px-4 transition-all duration-700",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      )}>
         {/* Section Header */}
         <div className="text-center mb-10">
           <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
-            Avaliações
+            {t("reviews.label")}
           </span>
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-3">
-            O Que Dizem Sobre Nós
+            {t("reviews.title")}
           </h2>
 
           {/* Rating Summary */}
@@ -61,7 +98,7 @@ const ReviewsSection = () => {
             <div className="h-10 w-px bg-border" />
             <div className="text-left">
               <div className="font-medium text-foreground text-sm">Google Maps</div>
-              <div className="text-xs text-muted-foreground">Avaliações verificadas</div>
+              <div className="text-xs text-muted-foreground">{t("reviews.verified")}</div>
             </div>
           </div>
           <div className="w-16 h-0.5 bg-terracotta mx-auto mt-6" />
@@ -72,7 +109,11 @@ const ReviewsSection = () => {
           {reviews.map((review, index) => (
             <Card
               key={index}
-              className="bg-card border-border hover:shadow-medium transition-all duration-300"
+              className={cn(
+                "bg-card border-border hover:shadow-medium transition-all duration-500",
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              )}
+              style={{ transitionDelay: isVisible ? `${index * 100}ms` : "0ms" }}
             >
               <CardContent className="p-4">
                 <Quote className="w-6 h-6 text-terracotta/30 mb-2" />
