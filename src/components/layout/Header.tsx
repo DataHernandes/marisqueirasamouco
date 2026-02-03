@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || isMobileMenuOpen
           ? "bg-cream/98 backdrop-blur-md shadow-medium py-2"
           : "bg-transparent py-4"
       }`}
@@ -51,8 +51,9 @@ const Header = () => {
               src={logo} 
               alt="Marisqueira do Samouco" 
               className={`transition-all duration-300 ${
-                isScrolled ? "h-12 md:h-14" : "h-14 md:h-16"
-              } ${!isScrolled ? "brightness-0 invert" : ""}`}
+                isScrolled || isMobileMenuOpen ? "h-12 md:h-14" : "h-14 md:h-16"
+              }`}
+              style={{ filter: (!isScrolled && !isMobileMenuOpen) ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))' : 'none' }}
             />
           </a>
 
@@ -128,10 +129,10 @@ const Header = () => {
 
           {/* Mobile: Language + Menu Button */}
           <div className="lg:hidden flex items-center gap-2">
-            <LanguageSwitcher variant={isScrolled ? "light" : "dark"} />
+            <LanguageSwitcher variant={(isScrolled || isMobileMenuOpen) ? "light" : "dark"} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 ${isScrolled ? "text-foreground" : "text-cream"}`}
+              className={`p-2 ${(isScrolled || isMobileMenuOpen) ? "text-foreground" : "text-cream"}`}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -141,35 +142,25 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <nav className={`lg:hidden mt-4 pb-4 border-t pt-4 ${
-            isScrolled ? "border-foreground/10" : "border-cream/20"
-          }`}>
+          <nav className="lg:hidden mt-4 pb-4 border-t border-foreground/10 pt-4">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`font-medium transition-colors ${
-                    isScrolled 
-                      ? "text-foreground/80 hover:text-foreground" 
-                      : "text-cream/90 hover:text-cream"
-                  }`}
+                  className="text-foreground/80 hover:text-foreground font-medium transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-              <div className={`flex flex-col gap-3 pt-4 border-t ${
-                isScrolled ? "border-foreground/10" : "border-cream/20"
-              }`}>
+              <div className="flex flex-col gap-3 pt-4 border-t border-foreground/10">
                 <div className="flex items-center gap-4">
                   <a
                     href="https://www.facebook.com/pages/Marisqueira-do-Samouco/197224063671691"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-2 transition-colors ${
-                      isScrolled ? "text-foreground/70 hover:text-foreground" : "text-cream/80 hover:text-cream"
-                    }`}
+                    className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
                   >
                     <Facebook className="w-5 h-5" />
                     <span>Facebook</span>
@@ -178,9 +169,7 @@ const Header = () => {
                     href="https://www.instagram.com/marisqueiradosamouco"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-2 transition-colors ${
-                      isScrolled ? "text-foreground/70 hover:text-foreground" : "text-cream/80 hover:text-cream"
-                    }`}
+                    className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
                   >
                     <Instagram className="w-5 h-5" />
                     <span>Instagram</span>
@@ -188,9 +177,7 @@ const Header = () => {
                 </div>
                 <a
                   href="tel:+351913184552"
-                  className={`flex items-center gap-2 transition-colors ${
-                    isScrolled ? "text-foreground/80 hover:text-foreground" : "text-cream/90 hover:text-cream"
-                  }`}
+                  className="flex items-center gap-2 text-foreground/80 hover:text-foreground transition-colors"
                 >
                   <Phone className="w-5 h-5" />
                   +351 913 184 552
