@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, MessageCircle, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import logo from "@/assets/logo.png";
-
-const navLinks = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#ementa", label: "Ementa" },
-  { href: "#galeria", label: "Galeria" },
-  { href: "#avaliacoes", label: "Avaliações" },
-  { href: "#localizacao", label: "Localização" },
-  { href: "#contacto", label: "Contacto" },
-];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { href: "#sobre", label: t("nav.about") },
+    { href: "#ementa", label: t("nav.menu") },
+    { href: "#galeria", label: t("nav.gallery") },
+    { href: "#avaliacoes", label: t("nav.reviews") },
+    { href: "#localizacao", label: t("nav.location") },
+    { href: "#contacto", label: t("nav.contact") },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,9 +73,11 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Social & CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <div className="flex items-center gap-2">
+          {/* Social, Language & CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher variant={isScrolled ? "light" : "dark"} />
+            <div className={`w-px h-5 ${isScrolled ? "bg-foreground/20" : "bg-cream/20"}`} />
+            <div className="flex items-center gap-1">
               <a
                 href="https://www.facebook.com/pages/Marisqueira-do-Samouco/197224063671691"
                 target="_blank"
@@ -100,7 +105,6 @@ const Header = () => {
                 <Instagram className="w-4 h-4" />
               </a>
             </div>
-            <div className="w-px h-6 bg-current opacity-20" />
             <a
               href="tel:+351913184552"
               className={`flex items-center gap-2 text-sm transition-colors ${
@@ -122,14 +126,17 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 ${isScrolled ? "text-foreground" : "text-cream"}`}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile: Language + Menu Button */}
+          <div className="lg:hidden flex items-center gap-2">
+            <LanguageSwitcher variant={isScrolled ? "light" : "dark"} />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`p-2 ${isScrolled ? "text-foreground" : "text-cream"}`}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -193,7 +200,7 @@ const Header = () => {
                   className="bg-terracotta hover:bg-terracotta-dark text-cream font-semibold rounded-full"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  Fale Conosco no WhatsApp
+                  {t("hero.cta.whatsapp")}
                 </Button>
               </div>
             </div>
