@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, Clock, MapPin, Facebook } from "lucide-react";
+import { Phone, MessageCircle, Clock, MapPin, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ContactSection = () => {
@@ -17,112 +17,116 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contacto" className="py-20 bg-primary text-primary-foreground">
+    <section id="contacto" className="py-16 bg-foreground text-cream">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12">
-            <span className="text-accent font-medium uppercase tracking-wider text-sm mb-2 block">
+          <div className="text-center mb-10">
+            <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
               Reserve a Sua Mesa
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4">
-              Entre em Contacto Connosco
+            <h2 className="font-serif text-3xl md:text-4xl mb-3">
+              Entre em Contacto
             </h2>
-            <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
-              Faça a sua reserva na Marisqueira do Samouco e venha saborear os melhores
-              frutos do mar da região do Montijo.
+            <p className="text-cream/70 max-w-lg mx-auto text-sm">
+              Faça a sua reserva e venha saborear os melhores frutos do mar.
             </p>
-            <div className="w-20 h-1 bg-accent mx-auto rounded-full mt-4" />
+            <div className="w-16 h-0.5 bg-terracotta mx-auto mt-4" />
           </div>
 
           {/* Contact Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {/* WhatsApp */}
-            <div className="bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="w-7 h-7 text-accent" />
+            <div className="bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center">
+              <div className="w-10 h-10 rounded-full bg-terracotta/20 flex items-center justify-center mx-auto mb-3">
+                <MessageCircle className="w-5 h-5 text-terracotta" />
               </div>
-              <h3 className="font-semibold mb-2">WhatsApp</h3>
-              <p className="text-primary-foreground/70 text-sm mb-3">Resposta rápida</p>
+              <h3 className="font-semibold mb-1 text-sm">WhatsApp</h3>
               <a
                 href={`https://wa.me/${whatsappNumber}`}
-                className="text-accent hover:text-accent/80 font-medium transition-colors"
+                className="text-terracotta hover:text-terracotta/80 font-medium transition-colors text-sm"
               >
-                +351 913 184 552
+                913 184 552
               </a>
             </div>
 
             {/* Phone */}
-            <div className="bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-7 h-7 text-accent" />
+            <div className="bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center">
+              <div className="w-10 h-10 rounded-full bg-terracotta/20 flex items-center justify-center mx-auto mb-3">
+                <Phone className="w-5 h-5 text-terracotta" />
               </div>
-              <h3 className="font-semibold mb-2">Telefone</h3>
-              <p className="text-primary-foreground/70 text-sm mb-3">Ligue-nos diretamente</p>
+              <h3 className="font-semibold mb-1 text-sm">Telefone</h3>
               <a
                 href={`tel:${phoneNumber}`}
-                className="text-accent hover:text-accent/80 font-medium transition-colors"
+                className="text-terracotta hover:text-terracotta/80 font-medium transition-colors text-sm"
               >
-                +351 913 184 552
+                913 184 552
               </a>
             </div>
 
             {/* Hours */}
-            <div className="bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-7 h-7 text-accent" />
+            <div className="bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center">
+              <div className="w-10 h-10 rounded-full bg-terracotta/20 flex items-center justify-center mx-auto mb-3">
+                <Clock className="w-5 h-5 text-terracotta" />
               </div>
-              <h3 className="font-semibold mb-2">Horário</h3>
-              <p className="text-primary-foreground/70 text-sm mb-1">Almoço: 12:30 – 15:00</p>
-              <p className="text-primary-foreground/70 text-sm">Jantar: 19:00 – 22:00</p>
+              <h3 className="font-semibold mb-1 text-sm">Horário</h3>
+              <p className="text-cream/70 text-xs">12:30–15:00 | 19:00–22:00</p>
             </div>
 
             {/* Address */}
-            <div className="bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-7 h-7 text-accent" />
+            <div className="bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center">
+              <div className="w-10 h-10 rounded-full bg-terracotta/20 flex items-center justify-center mx-auto mb-3">
+                <MapPin className="w-5 h-5 text-terracotta" />
               </div>
-              <h3 className="font-semibold mb-2">Morada</h3>
-              <p className="text-primary-foreground/70 text-sm">
-                Praça da República nº39<br />
-                2890-210 Samouco
-              </p>
+              <h3 className="font-semibold mb-1 text-sm">Morada</h3>
+              <p className="text-cream/70 text-xs">Praça da República, 39</p>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <Button
               onClick={handleWhatsAppClick}
               size="lg"
-              className="bg-accent hover:bg-gold-dark text-primary font-semibold text-lg px-10 py-7 rounded-full shadow-strong transition-all hover:scale-105"
+              className="bg-terracotta hover:bg-terracotta-dark text-cream font-semibold px-8 py-5 rounded-full shadow-strong transition-all hover:scale-105"
             >
-              <MessageCircle className="w-6 h-6 mr-2" />
+              <MessageCircle className="w-5 h-5 mr-2" />
               Reservar via WhatsApp
             </Button>
             <Button
               onClick={handlePhoneClick}
               variant="outline"
               size="lg"
-              className="border-2 border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 font-semibold text-lg px-10 py-7 rounded-full transition-all hover:scale-105"
+              className="border-2 border-cream/30 bg-transparent text-cream hover:bg-cream/10 font-semibold px-8 py-5 rounded-full transition-all hover:scale-105"
             >
-              <Phone className="w-6 h-6 mr-2" />
+              <Phone className="w-5 h-5 mr-2" />
               Ligar Agora
             </Button>
           </div>
 
           {/* Social Links */}
-          <div className="mt-12 text-center">
-            <p className="text-primary-foreground/60 mb-4">Siga-nos nas redes sociais</p>
-            <a
-              href="http://www.facebook.com/pages/Marisqueira-do-Samouco/197224063671691"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors"
-            >
-              <Facebook className="w-6 h-6" />
-              <span>Facebook</span>
-            </a>
+          <div className="mt-10 text-center">
+            <p className="text-cream/50 mb-4 text-sm">Siga-nos nas redes sociais</p>
+            <div className="flex justify-center gap-4">
+              <a
+                href="https://www.facebook.com/pages/Marisqueira-do-Samouco/197224063671691"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-cream/70 hover:text-terracotta transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
+                <span className="text-sm">Facebook</span>
+              </a>
+              <a
+                href="https://www.instagram.com/marisqueiradosamouco"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-cream/70 hover:text-terracotta transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
+                <span className="text-sm">Instagram</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

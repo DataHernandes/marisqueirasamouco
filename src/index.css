@@ -8,107 +8,108 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Maritime Restaurant Theme - Elegant & Professional */
-    --background: 210 25% 98%;
-    --foreground: 210 50% 10%;
+    /* Marisqueira do Samouco - Official Brand Colors (Black & Cream) */
+    --background: 40 33% 98%;
+    --foreground: 0 0% 8%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 210 50% 10%;
+    --card: 40 20% 99%;
+    --card-foreground: 0 0% 8%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 50% 10%;
+    --popover: 40 20% 99%;
+    --popover-foreground: 0 0% 8%;
 
-    /* Deep Ocean Blue - Primary Brand */
-    --primary: 210 80% 25%;
-    --primary-foreground: 45 100% 96%;
+    /* Deep Black - Primary Brand */
+    --primary: 0 0% 8%;
+    --primary-foreground: 40 33% 96%;
 
-    /* Sandy Cream - Secondary */
-    --secondary: 45 30% 94%;
-    --secondary-foreground: 210 50% 15%;
+    /* Warm Cream - Secondary */
+    --secondary: 40 25% 94%;
+    --secondary-foreground: 0 0% 12%;
 
-    /* Muted Ocean Tones */
-    --muted: 200 20% 92%;
-    --muted-foreground: 210 15% 40%;
+    /* Muted Warm Tones */
+    --muted: 35 15% 92%;
+    --muted-foreground: 0 0% 35%;
 
-    /* Golden Accent - Premium Feel */
-    --accent: 38 90% 50%;
-    --accent-foreground: 210 80% 15%;
+    /* Rich Terracotta Accent */
+    --accent: 15 70% 45%;
+    --accent-foreground: 40 33% 98%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 33% 98%;
 
-    --border: 200 25% 88%;
-    --input: 200 25% 88%;
-    --ring: 210 80% 25%;
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 0 0% 8%;
 
     --radius: 0.5rem;
 
-    /* Custom Colors for the Restaurant */
-    --ocean-deep: 210 80% 20%;
-    --ocean-light: 200 60% 45%;
-    --sand: 45 40% 90%;
-    --gold: 38 90% 50%;
-    --gold-dark: 35 80% 40%;
-    --cream: 45 100% 96%;
-    --seafoam: 175 40% 85%;
+    /* Custom Restaurant Colors */
+    --charcoal: 0 0% 15%;
+    --ink: 0 0% 8%;
+    --cream: 40 33% 96%;
+    --cream-dark: 38 25% 90%;
+    --terracotta: 15 70% 45%;
+    --terracotta-dark: 12 65% 38%;
+    --warm-white: 40 40% 99%;
+    --gold: 38 75% 50%;
 
     /* Gradients */
-    --gradient-ocean: linear-gradient(135deg, hsl(210 80% 20%) 0%, hsl(200 60% 35%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(38 90% 50%) 0%, hsl(35 80% 40%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsla(210, 80%, 15%, 0.95) 0%, hsla(210, 70%, 25%, 0.9) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(0 0% 18%) 100%);
+    --gradient-cream: linear-gradient(135deg, hsl(40 33% 96%) 0%, hsl(38 25% 90%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsla(0, 0%, 5%, 0.92) 0%, hsla(0, 0%, 12%, 0.88) 100%);
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsla(210, 50%, 20%, 0.1);
-    --shadow-medium: 0 8px 30px -6px hsla(210, 50%, 20%, 0.15);
-    --shadow-strong: 0 12px 40px -8px hsla(210, 50%, 20%, 0.2);
+    --shadow-soft: 0 4px 20px -4px hsla(0, 0%, 0%, 0.08);
+    --shadow-medium: 0 8px 30px -6px hsla(0, 0%, 0%, 0.12);
+    --shadow-strong: 0 12px 40px -8px hsla(0, 0%, 0%, 0.18);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 40 33% 98%;
+    --sidebar-foreground: 0 0% 15%;
+    --sidebar-primary: 0 0% 8%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 35 20% 95%;
+    --sidebar-accent-foreground: 0 0% 8%;
+    --sidebar-border: 35 15% 91%;
+    --sidebar-ring: 0 0% 8%;
   }
 
   .dark {
-    --background: 210 50% 8%;
-    --foreground: 45 30% 95%;
+    --background: 0 0% 6%;
+    --foreground: 40 25% 95%;
 
-    --card: 210 45% 12%;
-    --card-foreground: 45 30% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 40 25% 95%;
 
-    --popover: 210 45% 12%;
-    --popover-foreground: 45 30% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 40 25% 95%;
 
-    --primary: 200 60% 50%;
-    --primary-foreground: 210 50% 10%;
+    --primary: 40 33% 96%;
+    --primary-foreground: 0 0% 8%;
 
-    --secondary: 210 35% 18%;
-    --secondary-foreground: 45 30% 95%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 40 25% 95%;
 
-    --muted: 210 35% 18%;
-    --muted-foreground: 200 20% 65%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 35 15% 65%;
 
-    --accent: 38 90% 55%;
-    --accent-foreground: 210 50% 10%;
+    --accent: 15 70% 50%;
+    --accent-foreground: 40 33% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 33% 98%;
 
-    --border: 210 35% 20%;
-    --input: 210 35% 20%;
-    --ring: 200 60% 50%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 40 33% 96%;
     
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 40 25% 95%;
+    --sidebar-primary: 40 33% 96%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 40 25% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 40 33% 96%;
   }
 }
 
