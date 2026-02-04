@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 import lobsterImg from "@/assets/gallery/lobster.jpg";
 import cataplanaImg from "@/assets/gallery/cataplana.jpg";
@@ -20,6 +21,8 @@ const galleryImages = [
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const openLightbox = (index: number) => setSelectedImage(index);
   const closeLightbox = () => setSelectedImage(null);
@@ -40,7 +43,12 @@ const GallerySection = () => {
     <section id="galeria" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-8">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-8 transition-all duration-1000 ${
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
             Galeria
           </span>
@@ -51,12 +59,22 @@ const GallerySection = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl mx-auto">
+        <div 
+          ref={gridRef}
+          className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl mx-auto"
+        >
           {galleryImages.map((image, index) => (
             <div
               key={index}
               onClick={() => openLightbox(index)}
-              className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"
+              className={`group relative aspect-square overflow-hidden rounded-lg cursor-pointer transition-all duration-700 ${
+                gridVisible 
+                  ? "opacity-100 translate-y-0 scale-100" 
+                  : "opacity-0 translate-y-10 scale-95"
+              }`}
+              style={{ 
+                transitionDelay: gridVisible ? `${index * 100}ms` : '0ms'
+              }}
             >
               <img
                 src={image.src}

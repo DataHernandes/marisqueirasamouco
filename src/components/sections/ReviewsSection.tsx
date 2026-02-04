@@ -1,5 +1,6 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const reviews = [
   {
@@ -30,12 +31,19 @@ const reviews = [
 
 const ReviewsSection = () => {
   const averageRating = 4.7;
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
     <section id="avaliacoes" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-10">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-10 transition-all duration-1000 ${
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
             Avaliações
           </span>
@@ -68,11 +76,21 @@ const ReviewsSection = () => {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        <div 
+          ref={gridRef}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto"
+        >
           {reviews.map((review, index) => (
             <Card
               key={index}
-              className="bg-card border-border hover:shadow-medium transition-all duration-300"
+              className={`bg-card border-border hover:shadow-medium transition-all duration-700 ${
+                gridVisible 
+                  ? "opacity-100 translate-y-0" 
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{ 
+                transitionDelay: gridVisible ? `${index * 150}ms` : '0ms'
+              }}
             >
               <CardContent className="p-4">
                 <Quote className="w-6 h-6 text-terracotta/30 mb-2" />

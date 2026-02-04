@@ -1,4 +1,5 @@
 import { Fish, Shell, Waves, Flame } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const menuCategories = [
   {
@@ -52,11 +53,19 @@ const menuCategories = [
 ];
 
 const MenuSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section id="ementa" className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-10">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-10 transition-all duration-1000 ${
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
             A Nossa Ementa
           </span>
@@ -70,11 +79,21 @@ const MenuSection = () => {
         </div>
 
         {/* Menu Grid */}
-        <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-          {menuCategories.map((category) => (
+        <div 
+          ref={gridRef}
+          className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto"
+        >
+          {menuCategories.map((category, index) => (
             <div
               key={category.title}
-              className="bg-card rounded-lg p-5 shadow-soft border border-border"
+              className={`bg-card rounded-lg p-5 shadow-soft border border-border hover:shadow-medium transition-all duration-700 ${
+                gridVisible 
+                  ? "opacity-100 translate-y-0" 
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{ 
+                transitionDelay: gridVisible ? `${index * 150}ms` : '0ms'
+              }}
             >
               {/* Category Header */}
               <div className="flex items-center gap-3 mb-4 pb-3 border-b border-border">
@@ -103,7 +122,11 @@ const MenuSection = () => {
         </div>
 
         {/* Note */}
-        <div className="text-center mt-8 max-w-xl mx-auto">
+        <div 
+          className={`text-center mt-8 max-w-xl mx-auto transition-all duration-1000 delay-500 ${
+            gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+          }`}
+        >
           <p className="text-muted-foreground text-xs">
             Preços sujeitos a variação. Contacte-nos:{" "}
             <a
