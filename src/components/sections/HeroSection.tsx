@@ -1,10 +1,21 @@
 import { Phone, MessageCircle, MapPin, Star, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-seafood.jpg";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
   const whatsappNumber = "351913184552";
   const phoneNumber = "+351913184552";
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleWhatsAppClick = () => {
     window.open(
@@ -23,10 +34,13 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image with Parallax Effect */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        style={{ 
+          backgroundImage: `url(${heroImage})`,
+          transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
+        }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/85 via-foreground/75 to-foreground/90" />
       </div>
