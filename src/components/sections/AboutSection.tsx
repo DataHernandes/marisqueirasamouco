@@ -1,12 +1,21 @@
 import { MapPin, Clock, Phone, Heart } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const AboutSection = () => {
+  const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
     <section id="sobre" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-10">
+          <div 
+            ref={sectionRef}
+            className={`text-center mb-10 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
               Conheça-nos
             </span>
@@ -19,7 +28,11 @@ const AboutSection = () => {
           {/* Content */}
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Text Content */}
-            <div className="space-y-4">
+            <div 
+              className={`space-y-4 transition-all duration-1000 delay-200 ${
+                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+              }`}
+            >
               <p className="text-muted-foreground leading-relaxed">
                 Situada na pitoresca <strong className="text-foreground">Praça da República</strong> em{" "}
                 <strong className="text-foreground">Samouco, Portugal</strong>, a Marisqueira do Samouco é
@@ -45,9 +58,14 @@ const AboutSection = () => {
             </div>
 
             {/* Info Cards */}
-            <div className="space-y-3">
+            <div 
+              ref={cardsRef}
+              className={`space-y-3 transition-all duration-1000 delay-300 ${
+                cardsVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+              }`}
+            >
               {/* Address Card */}
-              <div className="bg-card p-5 rounded-lg shadow-soft border border-border">
+              <div className="bg-card p-5 rounded-lg shadow-soft border border-border hover:shadow-medium transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-5 h-5 text-terracotta" />
@@ -63,7 +81,7 @@ const AboutSection = () => {
               </div>
 
               {/* Hours Card */}
-              <div className="bg-card p-5 rounded-lg shadow-soft border border-border">
+              <div className="bg-card p-5 rounded-lg shadow-soft border border-border hover:shadow-medium transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center flex-shrink-0">
                     <Clock className="w-5 h-5 text-terracotta" />
@@ -78,7 +96,7 @@ const AboutSection = () => {
               </div>
 
               {/* Phone Card */}
-              <div className="bg-card p-5 rounded-lg shadow-soft border border-border">
+              <div className="bg-card p-5 rounded-lg shadow-soft border border-border hover:shadow-medium transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5 text-terracotta" />

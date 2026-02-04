@@ -1,9 +1,13 @@
 import { Phone, MessageCircle, Clock, MapPin, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const ContactSection = () => {
   const whatsappNumber = "351913184552";
   const phoneNumber = "+351913184552";
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation({ threshold: 0.3 });
 
   const handleWhatsAppClick = () => {
     window.open(
@@ -21,7 +25,12 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-10">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-10 transition-all duration-1000 ${
+              headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             <span className="text-terracotta font-medium uppercase tracking-wider text-sm mb-2 block">
               Reserve a Sua Mesa
             </span>
@@ -35,9 +44,17 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <div 
+            ref={gridRef}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10"
+          >
             {/* WhatsApp */}
-            <div className="bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center">
+            <div 
+              className={`bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center transition-all duration-700 hover:bg-cream/10 ${
+                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: gridVisible ? '0ms' : '0ms' }}
+            >
               <div className="w-10 h-10 rounded-full bg-terracotta/20 flex items-center justify-center mx-auto mb-3">
                 <MessageCircle className="w-5 h-5 text-terracotta" />
               </div>
@@ -51,7 +68,12 @@ const ContactSection = () => {
             </div>
 
             {/* Phone */}
-            <div className="bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center">
+            <div 
+              className={`bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center transition-all duration-700 hover:bg-cream/10 ${
+                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: gridVisible ? '100ms' : '0ms' }}
+            >
               <div className="w-10 h-10 rounded-full bg-terracotta/20 flex items-center justify-center mx-auto mb-3">
                 <Phone className="w-5 h-5 text-terracotta" />
               </div>
@@ -65,7 +87,12 @@ const ContactSection = () => {
             </div>
 
             {/* Hours */}
-            <div className="bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center">
+            <div 
+              className={`bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center transition-all duration-700 hover:bg-cream/10 ${
+                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: gridVisible ? '200ms' : '0ms' }}
+            >
               <div className="w-10 h-10 rounded-full bg-terracotta/20 flex items-center justify-center mx-auto mb-3">
                 <Clock className="w-5 h-5 text-terracotta" />
               </div>
@@ -74,7 +101,12 @@ const ContactSection = () => {
             </div>
 
             {/* Address */}
-            <div className="bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center">
+            <div 
+              className={`bg-cream/5 backdrop-blur-sm border border-cream/10 rounded-lg p-4 text-center transition-all duration-700 hover:bg-cream/10 ${
+                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: gridVisible ? '300ms' : '0ms' }}
+            >
               <div className="w-10 h-10 rounded-full bg-terracotta/20 flex items-center justify-center mx-auto mb-3">
                 <MapPin className="w-5 h-5 text-terracotta" />
               </div>
@@ -84,7 +116,12 @@ const ContactSection = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <div 
+            ref={ctaRef}
+            className={`flex flex-col sm:flex-row gap-3 justify-center items-center transition-all duration-1000 ${
+              ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             <Button
               onClick={handleWhatsAppClick}
               size="lg"
@@ -105,7 +142,11 @@ const ContactSection = () => {
           </div>
 
           {/* Social Links */}
-          <div className="mt-10 text-center">
+          <div 
+            className={`mt-10 text-center transition-all duration-1000 delay-300 ${
+              ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+            }`}
+          >
             <p className="text-cream/50 mb-4 text-sm">Siga-nos nas redes sociais</p>
             <div className="flex justify-center gap-4">
               <a
